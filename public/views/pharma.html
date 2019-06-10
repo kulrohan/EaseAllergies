@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<HTML>
+	<TITLE>EaseAllergies</TITLE>
+	<HEAD>
+		<!--  bootstrap -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<!-- Roboto Font -->
+		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'  type='text/css'>
+		<!-- jquery -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<!-- Main css -->
+		<link rel="stylesheet" href="css/main.css">
+		<!-- gcharts loader -->
+		<!-- table draw js -->
+		<script src="js/main.js"></script>
+		<script src="js/filter.js"></script>
+		<script src="js/piechart.js"></script>
+		<script src="js/timeBar.js"></script>
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+		<!-- navbar -->
+		<nav class="navborder navbar navbar-fixed-top navbar-expand-lg bg-white">
+			<!-- <a class="navbar-brand" href="#">Navbar</a> -->
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div id="navbarSupportedContent">
+				<ul class="navbar nav">
+					<li class="nav-item">
+						<a class="nav-link" id = "name" href="/">EaseAllergies</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/patient">PATIENT</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/doctor">DOCTOR</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/pharma">PHARMA</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<!-- <link rel="stylesheet" style="text/stylesheet" href="main2.css"> -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Drug', 'Use Cases'],
+          ['Allegra',     5],
+          ['Claritin',      5],
+          ['Zyrtec',  6],
+          ['Robitussin', 6],
+          ['Other',    2]
+        ]);
+
+        var options = {
+          title: 'Drug Use',
+          is3D: true
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+
+    <script>
+      google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawBasic);
+
+function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('string', 'Day');
+      data.addColumn('number', 'Use Cases');
+
+      data.addRows([
+        ['6/1/19', 1],
+        ['6/2/19', 2],
+        ['6/3/19', 4],
+        ['6/4/19', 5],
+        ['6/5/19', 3],
+        ['6/6/19', 7],
+        ['6/7/19', 6],
+
+      ]);
+
+      var options = {
+        legend: 'none',
+        title: 'Pollen Allergy Cases',
+        hAxis: {
+          title: 'Date',
+          format: 'h:mm a',
+          viewWindow: {
+            min: [7, 30, 0],
+            max: [17, 30, 0]
+          }
+        },
+        vAxis: {
+          title: 'Use Cases'
+        }
+      };
+
+      var chart = new google.visualization.ColumnChart(
+        document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+    }
+
+    </script>
+	</HEAD>
+
+
+	<body class="bg-blue">
+
+		<h1 style="padding-top: 1%;  text-align: center; font-size: 64px !important;" class="title-standard">PHARMACY DATA</h1>
+
+
+
+		<div class="container" style="padding-top: 3%; width:100%">
+
+			<div class="row">
+				<div id="admin-record" class="zoombit fiftyhundred col-md-6">
+					<p class="title_both text-center" style="padding-bottom:10px;">DRUG CONSUMPTION</p>
+					<p class="text_both text-center" style="padding-top:5%">
+						See how people are using <br> treatments
+					</p>
+				</div>
+				<div id="admin-log" class="zoombit  fiftyhundred col-md-6" style="">
+					<p class="title_both text-center" style="padding-bottom:10px;">ALLERGY CASES</p>
+					<p class="text_both text-center" style="padding-top:5%">
+						Allergy cases<br>by data
+					</p>
+				</div>
+			</div>
+
+
+      <div id="piechart" style="width: 550px; height: 200px; float:left;"></div>
+        <div id="chart_div" style="width: 550px; height: 200px; float:right;"></div>
+
+		</div>
+
+
+
+
+	</body>
+</HTML>
